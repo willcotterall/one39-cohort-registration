@@ -10,7 +10,7 @@ const PLANS = [
   {
     id: 'early-semi',
     tier: 'early',
-    name: 'Early Bird Bi-Monthly',
+    name: 'Early Bird Semi-Monthly',
     price: 249.5,
     display: '$249.50',
     interval: '/2x mo',
@@ -40,7 +40,7 @@ const PLANS = [
   {
     id: 'general-semi',
     tier: 'general',
-    name: 'General Bi-Monthly',
+    name: 'General Semi-Monthly',
     price: 299.5,
     display: '$299.50',
     interval: '/2x mo',
