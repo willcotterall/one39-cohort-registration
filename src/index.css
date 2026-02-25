@@ -1,0 +1,778 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #FBF8F4;
+  --black: #000000;
+  --gold: #CAAA6B;
+  --cream: #FFF6E8;
+  --white: #FFFFFF;
+  --gray-100: #F5F1EC;
+  --gray-300: #D4CFC8;
+  --gray-500: #8A857E;
+  --gray-700: #4A4641;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--sans);
+  background-color: var(--bg);
+  color: var(--black);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background-color: var(--gold);
+  color: var(--white);
+}
+
+input::placeholder {
+  color: var(--gray-500);
+}
+
+/* ——————————————————————————————————
+   HEADER
+   —————————————————————————————————— */
+
+.header {
+  border-bottom: 1px solid var(--gray-300);
+  padding: 1.25rem 2rem;
+}
+
+.header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-brand {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.header-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--gray-300);
+}
+
+.header-tagline {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+/* ——————————————————————————————————
+   FOOTER
+   —————————————————————————————————— */
+
+.footer {
+  border-top: 1px solid var(--gray-300);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  letter-spacing: 0.06em;
+}
+
+/* ——————————————————————————————————
+   FORM SECTION
+   —————————————————————————————————— */
+
+.form-section {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-header {
+  margin-bottom: 2.5rem;
+}
+
+.form-step-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.form-title {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+/* ——————————————————————————————————
+   FORM FIELDS
+   —————————————————————————————————— */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: var(--gold);
+}
+
+.form-input {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  padding: 0.8125rem 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--black);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.form-input--error {
+  border-color: #C0392B;
+}
+
+.form-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+.form-error {
+  font-size: 0.75rem;
+  color: #C0392B;
+  margin-top: 0.375rem;
+}
+
+.form-fieldset {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+/* ——————————————————————————————————
+   COACH GRID
+   —————————————————————————————————— */
+
+.coach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.coach-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1.5rem 1rem;
+  background: var(--white);
+  border: 1.5px solid var(--gray-300);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  font-family: var(--sans);
+}
+
+.coach-card:hover {
+  border-color: var(--gray-500);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.coach-card--selected {
+  border-color: var(--gold);
+  background: var(--cream);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.coach-card--selected:hover {
+  border-color: var(--gold);
+}
+
+.coach-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-card--selected .coach-avatar {
+  background: var(--gold);
+}
+
+.coach-initials {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.coach-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.coach-check {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 18px;
+  height: 18px;
+}
+
+/* ——————————————————————————————————
+   TERMS CHECKBOX
+   —————————————————————————————————— */
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.terms-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.terms-checkmark {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 4px;
+  background: var(--white);
+  margin-top: 1px;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+.terms-checkbox:checked + .terms-checkmark {
+  background: var(--black);
+  border-color: var(--black);
+}
+
+.terms-checkbox:checked + .terms-checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.terms-checkbox:focus-visible + .terms-checkmark {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.terms-text {
+  font-size: 0.8125rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.terms-link {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.terms-link:hover {
+  color: var(--gold);
+}
+
+/* ——————————————————————————————————
+   BUTTONS
+   —————————————————————————————————— */
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.9375rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--white);
+  background: var(--black);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: var(--gray-700);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  background: var(--black);
+}
+
+.btn-secondary {
+  padding: 0.9375rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--black);
+  background: transparent;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--black);
+  background: var(--gray-100);
+}
+
+/* ——————————————————————————————————
+   PRICING PAGE
+   —————————————————————————————————— */
+
+.pricing-container {
+  max-width: 660px;
+}
+
+/* Countdown banner */
+.countdown-banner {
+  background: var(--black);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.countdown-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+
+.countdown-number {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.countdown-desc {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+.countdown-colon {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--gray-500);
+  align-self: flex-start;
+  margin-top: 0.125rem;
+}
+
+.countdown-ends {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin-top: 0.75rem;
+}
+
+/* Pricing tiers */
+.pricing-tier {
+  margin-bottom: 1.75rem;
+}
+
+.pricing-tier-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gray-700);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-tier-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--black);
+  flex-shrink: 0;
+}
+
+.pricing-tier-dot--gold {
+  background: var(--gold);
+}
+
+.pricing-tier-sub {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  margin-bottom: 0.75rem;
+  margin-top: -0.375rem;
+}
+
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* Plan cards */
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1.5px solid var(--gray-300);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  font-family: var(--sans);
+  text-align: left;
+}
+
+.plan-card:hover {
+  border-color: var(--gray-500);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.plan-card--selected {
+  border-color: var(--gold);
+  background: var(--cream);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.plan-card--selected:hover {
+  border-color: var(--gold);
+}
+
+.plan-card--early {
+  border-color: rgba(202, 170, 107, 0.3);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: 0.75rem;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--gold);
+  color: var(--white);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+.plan-name {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+}
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  margin-bottom: 0.375rem;
+}
+
+.plan-price {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--black);
+}
+
+.plan-interval {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.plan-note {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  line-height: 1.4;
+}
+
+.plan-total {
+  font-size: 0.6875rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+.plan-check {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 20px;
+  height: 20px;
+}
+
+/* ——————————————————————————————————
+   PAYMENT PAGE
+   —————————————————————————————————— */
+
+.order-summary {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.order-summary-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gray-500);
+  margin-bottom: 1.25rem;
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+}
+
+.order-label {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+}
+
+.order-value {
+  font-size: 0.875rem;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.order-divider {
+  height: 1px;
+  background: var(--gray-300);
+  margin: 0.75rem 0;
+}
+
+/* Stripe Elements */
+.stripe-card-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.stripe-card-element {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stripe-card-element:focus-within {
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.payment-recurring-note {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.payment-error {
+  margin-bottom: 1rem;
+}
+
+/* Success state */
+.success-card {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.success-icon {
+  margin-bottom: 1.5rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-primary--payment {
+  flex: 1;
+}
+
+/* ——————————————————————————————————
+   RESPONSIVE
+   —————————————————————————————————— */
+
+@media (max-width: 600px) {
+  .form-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .coach-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem;
+  }
+
+  .coach-card {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .header {
+    padding: 1rem 1.25rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-primary--payment {
+    width: 100%;
+  }
+
+  .pricing-row {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+
+  .countdown-unit {
+    min-width: 40px;
+  }
+}
