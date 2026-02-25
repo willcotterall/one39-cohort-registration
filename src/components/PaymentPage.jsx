@@ -14,8 +14,9 @@ const stripePromise = loadStripe(
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+      fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
       fontSize: '15px',
+      fontWeight: '500',
       color: '#000000',
       '::placeholder': { color: '#8A857E' },
     },
@@ -38,7 +39,7 @@ export default function PaymentPage({ formData, selectedPlan, onBack }) {
 function CheckoutForm({ formData, selectedPlan, onBack }) {
   const stripe = useStripe()
   const elements = useElements()
-  const [status, setStatus] = useState('idle') // idle | processing | success | error
+  const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [cardComplete, setCardComplete] = useState(false)
 
@@ -52,7 +53,6 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
     setErrorMsg('')
 
     try {
-      // 1. Create PaymentIntent (or Subscription) on your backend
       const res = await fetch('/api/create-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,6 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
 
       const { clientSecret } = await res.json()
 
-      // 2. Confirm the payment with Stripe
       const { error, paymentIntent } = await stripe.confirmCardPayment(
         clientSecret,
         {
@@ -100,15 +99,15 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
 
   if (status === 'success') {
     return (
-      <section className="form-section">
+      <section className="form-section form-section--dark">
         <div className="form-container">
           <div className="success-card">
             <div className="success-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="24" fill="var(--gold)" />
+                <rect width="48" height="48" fill="var(--gold)" />
                 <path
                   d="M15 25L21 31L33 19"
-                  stroke="#fff"
+                  stroke="var(--black)"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -120,7 +119,7 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
             </h1>
             <p
               className="form-subtitle"
-              style={{ textAlign: 'center', maxWidth: '360px', margin: '0 auto' }}
+              style={{ textAlign: 'center', maxWidth: '400px', margin: '0 auto' }}
             >
               Welcome to the Creative Circle, {formData.firstName}. Check your
               email for next steps.
@@ -132,7 +131,7 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
   }
 
   return (
-    <section className="form-section">
+    <section className="form-section form-section--dark">
       <div className="form-container">
         <div className="form-header">
           <p className="form-step-label">Step 3 of 3</p>
@@ -142,7 +141,6 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
           </p>
         </div>
 
-        {/* Order summary */}
         <div className="order-summary">
           <h2 className="order-summary-title">Registration Summary</h2>
           <div className="order-row">
@@ -161,10 +159,10 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
           </div>
           <div className="order-divider" />
           <div className="order-row">
-            <span className="order-label" style={{ fontWeight: 600 }}>
+            <span className="order-label" style={{ fontWeight: 700 }}>
               {selectedPlan?.name}
             </span>
-            <span className="order-value" style={{ fontWeight: 600 }}>
+            <span className="order-value" style={{ fontWeight: 800 }}>
               {selectedPlan?.display}
               {selectedPlan?.interval}
             </span>
@@ -177,7 +175,6 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
           )}
         </div>
 
-        {/* Stripe Card Element */}
         <form onSubmit={handleSubmit}>
           <div className="stripe-card-wrapper">
             <label className="form-label" style={{ marginBottom: '0.75rem' }}>

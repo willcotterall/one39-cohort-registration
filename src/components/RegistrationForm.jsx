@@ -46,7 +46,7 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
   }
 
   return (
-    <section className="form-section">
+    <section className="form-section form-section--dark">
       <div className="form-container">
         <div className="form-header">
           <p className="form-step-label">Step 1 of 3</p>
@@ -57,7 +57,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
-          {/* Name row */}
           <div className="form-row">
             <div className="form-field">
               <label className="form-label" htmlFor="firstName">
@@ -93,7 +92,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             </div>
           </div>
 
-          {/* Email */}
           <div className="form-field">
             <label className="form-label" htmlFor="email">
               Email <span className="required">*</span>
@@ -111,7 +109,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             )}
           </div>
 
-          {/* Phone */}
           <div className="form-field">
             <label className="form-label" htmlFor="phone">
               Phone <span className="required">*</span>
@@ -129,7 +126,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             )}
           </div>
 
-          {/* Church Name */}
           <div className="form-row">
             <div className="form-field">
               <label className="form-label" htmlFor="churchName">
@@ -159,7 +155,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             </div>
           </div>
 
-          {/* Coach selection */}
           <fieldset className="form-fieldset">
             <legend className="form-label">
               Select Your Coach <span className="required">*</span>
@@ -179,7 +174,6 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             )}
           </fieldset>
 
-          {/* Terms */}
           <label className="terms-label">
             <input
               type="checkbox"
@@ -201,7 +195,7 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             </span>
           </label>
           {errors.termsAccepted && (
-            <span className="form-error" style={{ marginTop: '-0.5rem' }}>
+            <span className="form-error" style={{ marginTop: '-1rem', display: 'block', marginBottom: '1rem' }}>
               {errors.termsAccepted}
             </span>
           )}

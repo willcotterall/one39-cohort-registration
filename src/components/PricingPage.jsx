@@ -1,112 +1,6 @@
-import { useState, useEffect } from 'react'
-
-// Early bird window: 139 hours starting March 2, 2026 at 12:00 AM ET
-const EARLY_BIRD_START = new Date('2026-03-02T00:00:00-05:00')
-const EARLY_BIRD_END = new Date(
-  EARLY_BIRD_START.getTime() + 139 * 60 * 60 * 1000,
-)
-
-const PLANS = [
-  {
-    id: 'early-semi',
-    tier: 'early',
-    name: 'Early Bird Semi-Monthly',
-    price: 249.5,
-    display: '$249.50',
-    interval: '/2x mo',
-    note: 'Charged 1st & 15th · 10 months',
-    total: '$4,990 total',
-  },
-  {
-    id: 'early-monthly',
-    tier: 'early',
-    name: 'Early Bird Monthly',
-    price: 499,
-    display: '$499',
-    interval: '/mo',
-    note: '10 monthly payments',
-    total: '$4,990 total',
-  },
-  {
-    id: 'early-once',
-    tier: 'early',
-    name: 'Early Bird One-Time',
-    price: 4500,
-    display: '$4,500',
-    interval: '',
-    note: 'One-time payment',
-    badge: 'Best Value',
-  },
-  {
-    id: 'general-semi',
-    tier: 'general',
-    name: 'General Semi-Monthly',
-    price: 299.5,
-    display: '$299.50',
-    interval: '/2x mo',
-    note: 'Charged 1st & 15th · 10 months',
-    total: '$5,990 total',
-  },
-  {
-    id: 'general-monthly',
-    tier: 'general',
-    name: 'General Monthly',
-    price: 599,
-    display: '$599',
-    interval: '/mo',
-    note: '10 monthly payments',
-    total: '$5,990 total',
-  },
-  {
-    id: 'general-once',
-    tier: 'general',
-    name: 'General One-Time',
-    price: 5500,
-    display: '$5,500',
-    interval: '',
-    note: 'One-time payment',
-  },
-  {
-    id: 'group-monthly',
-    tier: 'group',
-    name: 'Group Monthly',
-    price: 1200,
-    display: '$1,200',
-    interval: '/mo',
-    note: '3–8 people · 10 monthly payments',
-    total: '$12,000 total',
-  },
-  {
-    id: 'group-once',
-    tier: 'group',
-    name: 'Group One-Time',
-    price: 10000,
-    display: '$10,000',
-    interval: '',
-    note: '3–8 people · One-time payment',
-  },
-]
-
-function useCountdown(endDate) {
-  const [remaining, setRemaining] = useState(() => calc(endDate))
-
-  function calc(end) {
-    const diff = end.getTime() - Date.now()
-    if (diff <= 0) return null
-    const d = Math.floor(diff / 86400000)
-    const h = Math.floor((diff % 86400000) / 3600000)
-    const m = Math.floor((diff % 3600000) / 60000)
-    const s = Math.floor((diff % 60000) / 1000)
-    return { d, h, m, s, total: diff }
-  }
-
-  useEffect(() => {
-    const id = setInterval(() => setRemaining(calc(endDate)), 1000)
-    return () => clearInterval(id)
-  }, [endDate])
-
-  return remaining
-}
+import { useState } from 'react'
+import { useCountdown } from '../hooks/useCountdown'
+import { PLANS, EARLY_BIRD_END } from '../data/pricing'
 
 export default function PricingPage({
   selectedPlan,
@@ -136,17 +30,16 @@ export default function PricingPage({
   const groupPlans = PLANS.filter((p) => p.tier === 'group')
 
   return (
-    <section className="form-section">
+    <section className="form-section form-section--light">
       <div className="form-container pricing-container">
         <div className="form-header">
           <p className="form-step-label">Step 2 of 3</p>
-          <h1 className="form-title">Choose Your Plan</h1>
+          <h1 className="form-title" style={{ color: 'var(--black)' }}>Choose Your Plan</h1>
           <p className="form-subtitle">
             Select the pricing option that works best for you.
           </p>
         </div>
 
-        {/* Countdown timer */}
         {earlyBirdActive && (
           <div className="countdown-banner">
             <div className="countdown-label">
@@ -189,7 +82,6 @@ export default function PricingPage({
           </div>
         )}
 
-        {/* Early Bird Plans */}
         {earlyBirdActive && (
           <div className="pricing-tier">
             <h2 className="pricing-tier-title">
@@ -209,7 +101,6 @@ export default function PricingPage({
           </div>
         )}
 
-        {/* General Plans */}
         <div className="pricing-tier">
           <h2 className="pricing-tier-title">
             <span className="pricing-tier-dot" />
@@ -227,13 +118,12 @@ export default function PricingPage({
           </div>
         </div>
 
-        {/* Group Plans */}
         <div className="pricing-tier">
           <h2 className="pricing-tier-title">
             <span className="pricing-tier-dot" />
             Group Registration
           </h2>
-          <p className="pricing-tier-sub">For teams of 3–8 people</p>
+          <p className="pricing-tier-sub">For teams of 3-8 people</p>
           <div className="pricing-row">
             {groupPlans.map((plan) => (
               <PlanCard
@@ -248,7 +138,7 @@ export default function PricingPage({
 
         {error && <span className="form-error">{error}</span>}
 
-        <div className="form-actions" style={{ marginTop: '1.5rem' }}>
+        <div className="form-actions" style={{ marginTop: '2rem' }}>
           <button type="button" className="btn-secondary" onClick={onBack}>
             Back
           </button>
@@ -286,10 +176,10 @@ function PlanCard({ plan, selected, onSelect }) {
       <div className="plan-check">
         {selected && (
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="10" fill="var(--gold)" />
+            <rect width="20" height="20" fill="var(--gold)" />
             <path
               d="M6 10.5L8.5 13L14 7.5"
-              stroke="#fff"
+              stroke="var(--black)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"

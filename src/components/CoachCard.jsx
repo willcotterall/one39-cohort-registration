@@ -1,9 +1,4 @@
 export default function CoachCard({ name, selected, onSelect }) {
-  const initials = name
-    .split(' ')
-    .map((w) => w[0])
-    .join('')
-
   return (
     <button
       type="button"
@@ -11,17 +6,19 @@ export default function CoachCard({ name, selected, onSelect }) {
       onClick={onSelect}
       aria-pressed={selected}
     >
-      <div className="coach-avatar">
-        <span className="coach-initials">{initials}</span>
+      <div className="coach-headshot">
+        <span className="coach-headshot-label">Headshot Needed</span>
       </div>
-      <span className="coach-name">{name}</span>
+      <div className="coach-info">
+        <span className="coach-name">{name}</span>
+      </div>
       <div className="coach-check">
         {selected && (
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="9" cy="9" r="9" fill="var(--gold)" />
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect width="20" height="20" fill="var(--gold)" />
             <path
-              d="M5.5 9.5L7.5 11.5L12.5 6.5"
-              stroke="#fff"
+              d="M6 10.5L8.5 13L14 7.5"
+              stroke="var(--black)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
