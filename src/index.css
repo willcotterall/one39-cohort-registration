@@ -63,28 +63,12 @@ input::placeholder {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-.header-brand {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
-.header-divider {
-  width: 1px;
-  height: 14px;
-  background: var(--gray-300);
-}
-
-.header-tagline {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.04em;
+.header-logo {
+  width: 160px;
+  height: auto;
+  display: block;
 }
 
 /* ——————————————————————————————————

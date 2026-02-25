@@ -53,9 +53,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <span className="header-brand">ONE39</span>
-        <span className="header-divider" />
-        <span className="header-tagline">Creative Circle</span>
+        <img src="/logo.png" alt="One39 Creative Circle" className="header-logo" />
       </div>
     </header>
   )
