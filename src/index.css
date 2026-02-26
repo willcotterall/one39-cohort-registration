@@ -339,7 +339,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 50vh 0 0;
+  padding: 14vh 0 0;
 }
 
 .hero-bg-img {
@@ -348,7 +348,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 80%;
+  object-position: center 65%;
   pointer-events: none;
 }
 
@@ -372,7 +372,6 @@ a {
   margin: 0 auto;
   z-index: 2;
   padding: 0 2rem 2rem;
-  margin-top: auto;
 }
 
 .hero-logo {
@@ -434,6 +433,7 @@ a {
   background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 1.75rem 2rem;
+  margin-top: auto;
 }
 
 .stats-bar-inner {
