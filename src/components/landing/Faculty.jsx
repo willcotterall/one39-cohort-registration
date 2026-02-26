@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import { FACULTY } from '../../data/faculty'
 
 export default function Faculty() {
+  const [activeBio, setActiveBio] = useState(null)
+
   return (
     <section className="faculty" id="faculty">
       <div className="faculty-inner">
@@ -24,13 +27,50 @@ export default function Faculty() {
                 />
               </div>
               <h3 className="faculty-name">{person.name}</h3>
-              <div className="faculty-bio-placeholder">
-                Bio Needed from One39
-              </div>
+              <p className="faculty-title">{person.title}</p>
+              <p className="faculty-summary">{person.summary}</p>
+              <button
+                type="button"
+                className="faculty-read-more"
+                onClick={() => setActiveBio(person)}
+              >
+                Read Full Bio
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {activeBio && (
+        <div className="bio-modal-overlay" onClick={() => setActiveBio(null)}>
+          <div className="bio-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="bio-modal-close"
+              onClick={() => setActiveBio(null)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <div className="bio-modal-header">
+              <img
+                src={activeBio.headshot}
+                alt={activeBio.name}
+                className="bio-modal-headshot"
+              />
+              <div>
+                <h3 className="bio-modal-name">{activeBio.name}</h3>
+                <p className="bio-modal-title">{activeBio.title}</p>
+              </div>
+            </div>
+            <div className="bio-modal-body">
+              {activeBio.bio.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
