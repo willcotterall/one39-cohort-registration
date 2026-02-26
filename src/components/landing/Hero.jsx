@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom'
+import StatsBar from './StatsBar'
 
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-bg" />
+      <img
+        src="/Images/BTS/TCHX139-BTS-(74of80).jpg"
+        alt=""
+        className="hero-bg-img"
+      />
+      <div className="hero-overlay" />
       <div className="hero-grain" />
       <div className="hero-inner">
-        <h1 className="hero-headline">Creative Circle</h1>
+        <img
+          src="/logo 4.png"
+          alt="CreativeCircle"
+          className="hero-logo"
+        />
         <p className="hero-tagline">The Weight of the Room.</p>
 
         <p className="hero-sub">
@@ -18,6 +28,7 @@ export default function Hero() {
           Register Now
         </Link>
       </div>
+      <StatsBar />
     </section>
   )
 }

@@ -8,7 +8,7 @@ export default function StickyNav() {
     function onScroll() {
       const hero = document.querySelector('.hero')
       if (!hero) return
-      setVisible(window.scrollY > hero.offsetHeight - 60)
+      setVisible(window.scrollY > hero.offsetHeight * 0.4)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -18,7 +18,7 @@ export default function StickyNav() {
     <nav className={`sticky-nav${visible ? ' sticky-nav--visible' : ''}`}>
       <div className="sticky-nav-inner">
         <img
-          src="/logo 2.png"
+          src="/logo 3.png"
           alt="One39 CreativeCircle"
           className="sticky-nav-logo"
         />
