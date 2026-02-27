@@ -598,8 +598,8 @@ a {
 
 .faculty-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 1.25rem;
 }
 
 .faculty-card {
@@ -1337,7 +1337,7 @@ a {
 
 .coach-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.875rem;
   margin-top: 0.625rem;
 }
@@ -2058,7 +2058,7 @@ a {
   }
 
   .coach-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.625rem;
   }
 

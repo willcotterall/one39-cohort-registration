@@ -12,7 +12,7 @@ export default function Faculty() {
           Led by Leaders<br />Who Lead Rooms
         </h2>
         <p className="faculty-intro">
-          You'll be paired with one of five coaches — each one a practitioner,
+          You'll be paired with one of six coaches — each one a practitioner,
           not just an instructor. They lead worship every week.
         </p>
 

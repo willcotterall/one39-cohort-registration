@@ -62,4 +62,11 @@ In addition to her pastoral leadership, Naomi is the founder of ReFraine Records
     summary: '',
     bio: '',
   },
+  {
+    name: 'Mack Brock',
+    headshot: null,
+    title: '',
+    summary: '',
+    bio: '',
+  },
 ]
