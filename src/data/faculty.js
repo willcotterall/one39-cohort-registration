@@ -55,4 +55,11 @@ Naomi is also a member of the church's Executive Leadership Team, where she cont
 
 In addition to her pastoral leadership, Naomi is the founder of ReFraine Records, a label dedicated to developing and positioning emerging artists for long-term impact. Whether leading worship, coaching creatives, or overseeing production, Naomi is committed to excellence, structure, and building healthy creative environments.`,
   },
+  {
+    name: 'Jane Williams',
+    headshot: null,
+    title: '',
+    summary: '',
+    bio: '',
+  },
 ]

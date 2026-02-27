@@ -12,7 +12,7 @@ export default function Faculty() {
           Led by Leaders<br />Who Lead Rooms
         </h2>
         <p className="faculty-intro">
-          You'll be paired with one of four coaches — each one a practitioner,
+          You'll be paired with one of five coaches — each one a practitioner,
           not just an instructor. They lead worship every week.
         </p>
 
@@ -20,22 +20,28 @@ export default function Faculty() {
           {FACULTY.map((person) => (
             <div key={person.name} className="faculty-card">
               <div className="faculty-headshot">
-                <img
-                  src={person.headshot}
-                  alt={person.name}
-                  className="faculty-headshot-img"
-                />
+                {person.headshot ? (
+                  <img
+                    src={person.headshot}
+                    alt={person.name}
+                    className="faculty-headshot-img"
+                  />
+                ) : (
+                  <span className="faculty-headshot-placeholder">Coming Soon</span>
+                )}
               </div>
               <h3 className="faculty-name">{person.name}</h3>
-              <p className="faculty-title">{person.title}</p>
-              <p className="faculty-summary">{person.summary}</p>
-              <button
-                type="button"
-                className="faculty-read-more"
-                onClick={() => setActiveBio(person)}
-              >
-                Read Full Bio
-              </button>
+              {person.title && <p className="faculty-title">{person.title}</p>}
+              {person.summary && <p className="faculty-summary">{person.summary}</p>}
+              {person.bio && (
+                <button
+                  type="button"
+                  className="faculty-read-more"
+                  onClick={() => setActiveBio(person)}
+                >
+                  Read Full Bio
+                </button>
+              )}
             </div>
           ))}
         </div>
