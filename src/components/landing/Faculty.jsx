@@ -27,6 +27,7 @@ export default function Faculty() {
                     src={person.headshot}
                     alt={person.name}
                     className="faculty-headshot-img"
+                    style={person.headshotPosition ? { objectPosition: person.headshotPosition } : undefined}
                   />
                 ) : (
                   <span className="faculty-headshot-placeholder">Coming Soon</span>
