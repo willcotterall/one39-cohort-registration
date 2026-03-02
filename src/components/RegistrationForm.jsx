@@ -7,6 +7,8 @@ const COACHES = [
   'Tasha Cobbs Leonard',
   'Todd Galberth',
   'Naomi Raine',
+  'Jane Williams',
+  'Mack Brock',
 ]
 
 export default function RegistrationForm({ formData, setFormData, onNext }) {
