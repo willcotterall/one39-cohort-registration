@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <img
-        src="/Images/BTS/TCHX139-BTS-(70of80).jpg"
+        src="/Images/BTS/TCHX139-BTS-(64of80).jpg"
         alt=""
         className="hero-bg-img"
       />
