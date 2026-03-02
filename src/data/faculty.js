@@ -43,7 +43,7 @@ Originally from Raeford, North Carolina, Todd now resides in Georgia with his wi
   {
     name: 'Naomi Raine',
     headshot: '/Images/Headshots/DSC09947.JPG',
-    title: '6x Grammy Winner · Worship Pastor · Maverick City Music',
+    title: '6x Grammy Winner · Executive Worship Pastor · Maverick City Music',
     summary: '6x Grammy Award winner and core member of Maverick City Music. Worship Pastor at Fresh Start Christian Center. Founder of ReFraine Records.',
     bio: `Naomi Raine began singing at two years old and wrote her first song by the age of seven. What started as an early passion has developed into a multifaceted career spanning global ministry, executive leadership, and creative direction.
 

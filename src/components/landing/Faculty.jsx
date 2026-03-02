@@ -9,11 +9,13 @@ export default function Faculty() {
       <div className="faculty-inner">
         <p className="section-label">Your Coaches</p>
         <h2 className="section-headline">
-          Led by Leaders<br />Who Lead Rooms
+          Led by Leaders<br />Who Move Rooms
         </h2>
         <p className="faculty-intro">
-          You'll be paired with one of six coaches — each one a practitioner,
-          not just an instructor. They lead worship every week.
+          Not observers, but operators. They lead teams, shape culture, and
+          steward churches every single week — on stage, behind the scenes,
+          and in the boardroom. You'll be paired with one of six elite coaches,
+          all active and proven at scale. This is not theory. It's transfer.
         </p>
 
         <div className="faculty-grid">
