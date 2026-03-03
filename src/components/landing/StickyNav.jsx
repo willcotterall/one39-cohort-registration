@@ -16,7 +16,7 @@ export default function StickyNav() {
     <nav className={`sticky-nav sticky-nav--visible${scrolled ? ' sticky-nav--scrolled' : ''}`}>
       <div className="sticky-nav-inner">
         <img
-          src="/logo 3.png"
+          src="/creativecirclelogo.png"
           alt="One39 CreativeCircle"
           className="sticky-nav-logo"
         />

@@ -24,7 +24,7 @@ export default function RegisterFlow() {
       <header className="header header--solid">
         <div className="header-inner">
           <Link to="/" className="header-logo-link">
-            <img src="/logo 3.png" alt="One39 CreativeCircle" className="header-logo" />
+            <img src="/creativecirclelogo.png" alt="CreativeCircle" className="header-logo" />
           </Link>
         </div>
       </header>
