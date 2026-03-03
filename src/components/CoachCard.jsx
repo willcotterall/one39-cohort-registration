@@ -2,7 +2,7 @@ import { FACULTY } from '../data/faculty'
 
 const HEADSHOT_MAP = {}
 FACULTY.forEach((f) => {
-  HEADSHOT_MAP[f.name] = f.headshot
+  HEADSHOT_MAP[f.name] = { src: f.headshot, position: f.headshotPosition || 'center top' }
 })
 
 export default function CoachCard({ name, selected, onSelect }) {
@@ -16,8 +16,13 @@ export default function CoachCard({ name, selected, onSelect }) {
       aria-pressed={selected}
     >
       <div className="coach-headshot">
-        {headshot ? (
-          <img src={headshot} alt={name} className="coach-headshot-img" />
+        {headshot?.src ? (
+          <img
+            src={headshot.src}
+            alt={name}
+            className="coach-headshot-img"
+            style={{ objectPosition: headshot.position }}
+          />
         ) : (
           <span className="coach-headshot-label">Headshot Needed</span>
         )}

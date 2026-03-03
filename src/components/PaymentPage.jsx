@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import {
   Elements,
@@ -166,6 +167,9 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
               Welcome to CreativeCircle, {formData.firstName}. Check your
               email for next steps.
             </p>
+            <Link to="/" className="btn-primary hero-cta" style={{ marginTop: '2rem', display: 'inline-block', width: 'auto' }}>
+              Back to Home
+            </Link>
           </div>
         </div>
       </section>
