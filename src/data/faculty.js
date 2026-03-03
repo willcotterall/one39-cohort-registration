@@ -75,7 +75,7 @@ Jane holds a Bachelor of Arts with a double major in History and Communication S
   },
   {
     name: 'Mack Brock',
-    headshot: '/Images/Headshots/Mack-Brock.png',
+    headshot: '/Images/Headshots/mackbrocknew.jpg',
     headshotPosition: 'center 20%',
     title: 'Songwriter · Worship Leader · Billboard No. 1 Writer · Worship Artist',
     summary: '20+ years shaping modern worship culture. Co-wrote "O Come to the Altar," "Do It Again," and "Resurrecting." Former Elevation Worship producer and worship leader.',
