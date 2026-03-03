@@ -60,12 +60,14 @@ In addition to her pastoral leadership, Naomi is the founder of ReFraine Records
     headshot: '/Images/Headshots/Jane-Williams.png',
     headshotPosition: 'center 35%',
     title: 'Songwriter · Worship Leader · Creative Strategist · Worship Culture Architect',
-    summary: '15+ years equipping churches to build thriving worship cultures. Former Elevation Worship leader and contributing songwriter behind "Same God," "Do It Again," and "Resurrecting."',
-    bio: `Jane Williams is a songwriter, worship leader, and creative strategist with over 15 years of experience equipping churches to cultivate thriving worship and creative cultures. Widely respected for her leadership within large-scale ministry environments, Jane spent 11 years with Elevation Worship, serving as both a worship leader and contributing songwriter during one of the most influential seasons in the collective's global growth.
+    summary: '15+ years in worship leadership. 11 years with Elevation Worship as a worship leader, songwriter, and pastor. Contributed to songs like "Yahweh," "Mighty Cross," and "Speak To The Mountains."',
+    bio: `Jane Williams is a songwriter, worship leader, and creative strategist with over 15 years of experience. Jane spent 11 years with Elevation Worship, serving as a worship leader, songwriter, and pastor during one of the most influential seasons in Elevation Worship's global growth. She is widely respected for her leadership within large-scale ministry environments, and is known for quietly holding teams together with a deep commitment to both people and mission.
 
-Elevation Worship, a Grammy Award–winning collective with billions of global streams, multiple RIAA-certified Gold and Platinum records, and numerous Billboard No. 1 Christian chart placements, has shaped modern worship worldwide. During her tenure, Jane helped build campus bands, pastor worship teams, develop sustainable songwriting systems, and mentor emerging worship leaders across multiple campuses of Elevation Church.
+Jane was not only a member, but a consistent pastor of Elevation Worship, a Grammy Award–winning collective with billions of global streams, multiple RIAA-certified Gold and Platinum records, and numerous Billboard No. 1 Christian chart placements, has shaped modern worship worldwide.
 
-Jane contributed to songs such as "Same God," "Do It Again," "Resurrecting," and other widely sung anthems that have been embraced by churches around the world. Her leadership extended beyond the platform, serving as a creative producer, online campus host, and media personality — helping shape the church's digital presence and global engagement.
+During her tenure at Elevation, Jane helped build campus bands, develop sustainable songwriting systems, and develop emerging worship leaders across multiple campuses of Elevation Church. Her leadership extended beyond the platform, serving as a creative producer, online campus host, and media personality — helping shape the church's digital presence and global engagement.
+
+Jane contributed to many EW songs such as "Yahweh" and "Mighty Cross" and other anthems outside of Elevation like "Speak To The Mountains" and "Earth And Heaven Roar" that have been embraced by churches around the world.
 
 Since transitioning to freelance ministry work in 2022, Jane has partnered with churches nationwide to build songwriting culture, strengthen worship leader development, and create healthy, sustainable creative teams. Her work focuses on merging spiritual depth with strategic systems that support long-term growth. In addition, she collaborates with faith-based brands to create devotionals, voiceover narration, and brand-aligned content rooted in thoughtful theology and storytelling.
 
