@@ -58,7 +58,7 @@ In addition to her pastoral leadership, Naomi is the founder of ReFraine Records
   {
     name: 'Jane Williams',
     headshot: '/Images/Headshots/Jane-Williams.png',
-    headshotPosition: 'center 8%',
+    headshotPosition: 'center 25%',
     title: 'Songwriter · Worship Leader · Creative Strategist · Worship Culture Architect',
     summary: '15+ years equipping churches to build thriving worship cultures. Former Elevation Worship leader and contributing songwriter behind "Same God," "Do It Again," and "Resurrecting."',
     bio: `Jane Williams is a songwriter, worship leader, and creative strategist with over 15 years of experience equipping churches to cultivate thriving worship and creative cultures. Widely respected for her leadership within large-scale ministry environments, Jane spent 11 years with Elevation Worship, serving as both a worship leader and contributing songwriter during one of the most influential seasons in the collective's global growth.
