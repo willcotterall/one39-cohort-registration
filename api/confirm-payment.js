@@ -45,53 +45,6 @@ async function createPrice(label, amount, isOneTime = false) {
   });
 }
 
-async function getOrCreateGroup(coachName) {
-  const query = `
-    query {
-      boards(ids: [${process.env.MONDAY_BOARD_ID}]) {
-        groups { id title }
-      }
-    }
-  `;
-
-  const res = await fetch('https://api.monday.com/v2', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': process.env.MONDAY_API_KEY,
-      'API-Version': '2024-01',
-    },
-    body: JSON.stringify({ query }),
-  });
-
-  const data = await res.json();
-  const groups = data.data.boards[0].groups;
-  const match = groups.find(g => g.title.toLowerCase() === coachName.toLowerCase());
-
-  if (match) return match.id;
-
-  const createGroup = `
-    mutation {
-      create_group(board_id: ${process.env.MONDAY_BOARD_ID}, group_name: "${coachName}") {
-        id
-      }
-    }
-  `;
-
-  const createRes = await fetch('https://api.monday.com/v2', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': process.env.MONDAY_API_KEY,
-      'API-Version': '2024-01',
-    },
-    body: JSON.stringify({ query: createGroup }),
-  });
-
-  const createData = await createRes.json();
-  return createData.data.create_group.id;
-}
-
 async function getStripePortalLink(customerId) {
   try {
     const session = await stripe.billingPortal.sessions.create({
@@ -105,31 +58,24 @@ async function getStripePortalLink(customerId) {
   }
 }
 
-async function addToMonday({ name, email, phone, church, coach, planLabel, customerId, subscriptionId = '', portalLink = '' }) {
+async function updateMondayItem({ mondayItemId, planLabel, customerId, subscriptionId = '', portalLink = '' }) {
   try {
-    const groupId = await getOrCreateGroup(coach);
     const today = new Date().toISOString().split('T')[0];
 
     const columnValues = {
-      "email_mm0pqws": { "email": email, "text": email },
-      "phone_mm0p7k3y": { "phone": phone, "countryShortName": "US" },
-      "date_mm0ptyex": { "date": today },
+      "color_mm0p9d9c": { "label": "Paid" },
       "date_mm0pa9c9": { "date": today },
-      "color_mm0p9d9c": { "label": "Active" },
       "text_mm0prvc5": customerId,
       "text_mm0pj8hf": subscriptionId,
-      "text_mm0zpx5": church,
       "text_mm0zqd6": planLabel,
       "link_mm0pjag5": { "url": portalLink, "text": "Stripe Portal" },
-      "text_mm133myq": coach,
     };
 
     const mutation = `
       mutation {
-        create_item(
+        change_multiple_column_values(
           board_id: ${process.env.MONDAY_BOARD_ID},
-          group_id: "${groupId}",
-          item_name: "${name}",
+          item_id: ${mondayItemId},
           column_values: ${JSON.stringify(JSON.stringify(columnValues))}
         ) {
           id
@@ -150,20 +96,20 @@ async function addToMonday({ name, email, phone, church, coach, planLabel, custo
     const data = await res.json();
 
     if (data.errors) {
-      console.error('❌ Monday.com error:', JSON.stringify(data.errors));
+      console.error('❌ Monday.com update error:', JSON.stringify(data.errors));
     } else {
-      console.log('✅ Added to Monday.com! Item ID:', data.data.create_item.id);
+      console.log('✅ Monday.com item updated to Paid! Item ID:', mondayItemId);
     }
 
   } catch (err) {
-    console.error('❌ Monday.com integration failed:', err.message);
+    console.error('❌ Monday.com update failed:', err.message);
   }
 }
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { customerId, paymentMethodId, planId, coach, churchName, position, name, email, phone } = req.body;
+  const { customerId, paymentMethodId, planId, coach, churchName, position, name, email, phone, mondayItemId } = req.body;
 
   const plan = PLANS[planId];
   if (!plan) return res.status(400).json({ error: 'Invalid plan' });
@@ -192,7 +138,9 @@ export default async function handler(req, res) {
       console.log('✅ PaymentIntent confirmed:', paymentIntent.id);
 
       const portalLink = await getStripePortalLink(customerId);
-      await addToMonday({ name, email, phone, church: churchName, coach, planLabel: plan.label, customerId, portalLink });
+      if (mondayItemId) {
+        await updateMondayItem({ mondayItemId, planLabel: plan.label, customerId, portalLink });
+      }
       return res.status(200).json({ success: true });
     }
 
@@ -247,7 +195,9 @@ export default async function handler(req, res) {
       console.log('✅ Semi-monthly subs created:', sub1.id, sub2.id);
 
       const portalLink = await getStripePortalLink(customerId);
-      await addToMonday({ name, email, phone, church: churchName, coach, planLabel: plan.label, customerId, subscriptionId: sub1.id, portalLink });
+      if (mondayItemId) {
+        await updateMondayItem({ mondayItemId, planLabel: plan.label, customerId, subscriptionId: sub1.id, portalLink });
+      }
       return res.status(200).json({ success: true });
     }
 
@@ -263,7 +213,9 @@ export default async function handler(req, res) {
     console.log('✅ Subscription created:', subscription.id);
 
     const portalLink = await getStripePortalLink(customerId);
-    await addToMonday({ name, email, phone, church: churchName, coach, planLabel: plan.label, customerId, subscriptionId: subscription.id, portalLink });
+    if (mondayItemId) {
+      await updateMondayItem({ mondayItemId, planLabel: plan.label, customerId, subscriptionId: subscription.id, portalLink });
+    }
     return res.status(200).json({ success: true });
 
   } catch (err) {

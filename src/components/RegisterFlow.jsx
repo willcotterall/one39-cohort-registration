@@ -18,6 +18,7 @@ export default function RegisterFlow() {
     noRecordingAccepted: false,
   })
   const [selectedPlan, setSelectedPlan] = useState(null)
+  const [mondayItemId, setMondayItemId] = useState(null)
 
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -33,6 +34,7 @@ export default function RegisterFlow() {
           <RegistrationForm
             formData={formData}
             setFormData={setFormData}
+            setMondayItemId={setMondayItemId}
             onNext={() => setStep(2)}
           />
         )}
@@ -48,6 +50,7 @@ export default function RegisterFlow() {
           <PaymentPage
             formData={formData}
             selectedPlan={selectedPlan}
+            mondayItemId={mondayItemId}
             onBack={() => setStep(2)}
           />
         )}

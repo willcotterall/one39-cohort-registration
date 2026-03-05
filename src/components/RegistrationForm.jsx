@@ -11,9 +11,10 @@ const COACHES = [
   'Mack Brock',
 ]
 
-export default function RegistrationForm({ formData, setFormData, onNext }) {
+export default function RegistrationForm({ formData, setFormData, setMondayItemId, onNext }) {
   const [errors, setErrors] = useState({})
   const [activeModal, setActiveModal] = useState(null)
+  const [submitting, setSubmitting] = useState(false)
 
   function update(field, value) {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -40,13 +41,36 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
     return next
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const v = validate()
     if (Object.keys(v).length) {
       setErrors(v)
       return
     }
+
+    setSubmitting(true)
+    try {
+      const res = await fetch('/api/create-monday-item', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          coach: formData.coach,
+          churchName: formData.churchName,
+          position: formData.position,
+        }),
+      })
+      const data = await res.json()
+      if (data.mondayItemId) {
+        setMondayItemId(data.mondayItemId)
+      }
+    } catch (err) {
+      console.error('Monday.com item creation failed:', err)
+    }
+    setSubmitting(false)
     onNext()
   }
 
@@ -227,8 +251,8 @@ export default function RegistrationForm({ formData, setFormData, onNext }) {
             </span>
           )}
 
-          <button type="submit" className="btn-primary">
-            Continue to Pricing
+          <button type="submit" className="btn-primary" disabled={submitting}>
+            {submitting ? 'Submitting...' : 'Continue to Pricing'}
           </button>
         </form>
       </div>

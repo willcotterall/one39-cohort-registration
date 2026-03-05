@@ -25,19 +25,20 @@ const CARD_ELEMENT_OPTIONS = {
   },
 }
 
-export default function PaymentPage({ formData, selectedPlan, onBack }) {
+export default function PaymentPage({ formData, selectedPlan, mondayItemId, onBack }) {
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm
         formData={formData}
         selectedPlan={selectedPlan}
+        mondayItemId={mondayItemId}
         onBack={onBack}
       />
     </Elements>
   )
 }
 
-function CheckoutForm({ formData, selectedPlan, onBack }) {
+function CheckoutForm({ formData, selectedPlan, mondayItemId, onBack }) {
   const stripe = useStripe()
   const elements = useElements()
   const [status, setStatus] = useState('idle')
@@ -119,6 +120,7 @@ function CheckoutForm({ formData, selectedPlan, onBack }) {
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
         phone: formData.phone,
+        mondayItemId,
       }),
     })
 
