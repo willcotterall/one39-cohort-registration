@@ -215,12 +215,6 @@ function CheckoutForm({ formData, mondayItemId, onBack }) {
               {selectedPlan?.display}{selectedPlan?.interval}
             </span>
           </div>
-          {selectedPlan?.total && (
-            <div className="order-row">
-              <span className="order-label">Total</span>
-              <span className="order-value">{selectedPlan.total}</span>
-            </div>
-          )}
           {earlyBirdActive && (
             <>
               <div className="order-divider" />
@@ -245,6 +239,11 @@ function CheckoutForm({ formData, mondayItemId, onBack }) {
             <span className="order-policy-text">No Recording Permitted</span>
           </div>
         </div>
+
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
+          * Group pricing is available. Email{' '}
+          <a href="mailto:kylie@one39.co" style={{ color: 'var(--gold)' }}>kylie@one39.co</a>
+        </p>
 
         <form onSubmit={handleSubmit}>
           <div className="stripe-card-wrapper">
