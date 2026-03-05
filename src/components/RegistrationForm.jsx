@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CoachCard from './CoachCard'
+import { useCountdown } from '../hooks/useCountdown'
+import { EARLY_BIRD_END } from '../data/pricing'
 
 const COACHES = [
   'Kenneth Leonard',
@@ -15,6 +17,8 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
   const [errors, setErrors] = useState({})
   const [activeModal, setActiveModal] = useState(null)
   const [submitting, setSubmitting] = useState(false)
+  const countdown = useCountdown(EARLY_BIRD_END)
+  const earlyBirdActive = countdown !== null
 
   function update(field, value) {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -252,8 +256,13 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
           )}
 
           <button type="submit" className="btn-primary" disabled={submitting}>
-            {submitting ? 'Submitting...' : 'Continue to Pricing'}
+            {submitting ? 'Submitting...' : 'Continue to Payment'}
           </button>
+          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
+            {earlyBirdActive
+              ? '* $299/Month for the first 139 hours'
+              : '* $399/Month'}
+          </p>
         </form>
       </div>
 
