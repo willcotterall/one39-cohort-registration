@@ -258,7 +258,7 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
           <button type="submit" className="btn-primary" disabled={submitting}>
             {submitting ? 'Submitting...' : 'Continue to Payment'}
           </button>
-          <p style={{ fontSize: '1.6rem', color: 'var(--text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
+          <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
             {earlyBirdActive
               ? '* $299/Month for the first 139 hours'
               : '* $399/Month'}

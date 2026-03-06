@@ -247,7 +247,7 @@ function CheckoutForm({ formData, mondayItemId, onBack }) {
           </div>
         </div>
 
-        <p style={{ fontSize: '1.6rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
+        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
           * Group pricing is available. Email{' '}
           <a href="mailto:kylie@one39.co" style={{ color: 'var(--gold)' }}>kylie@one39.co</a>
         </p>
