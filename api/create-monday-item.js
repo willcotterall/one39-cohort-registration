@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       "phone_mm0p7k3y": { "phone": phone, "countryShortName": "US" },
       "date_mm0ptyex": { "date": today },
       "date_mm0pa9c9": { "date": today },
-      "color_mm14can9": { "label": "Abandoned" },
+      "color_mm14can9": { "label": "Pending" },
       "text_mm0zpx5": churchName || '',
       "text_mm133myq": coach,
     };
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
     }
 
     const itemId = mondayData.data.create_item.id;
-    console.log('✅ Monday.com item created (Abandoned):', itemId);
+    console.log('✅ Monday.com item created (Pending):', itemId);
 
     return res.status(200).json({ success: true, mondayItemId: itemId });
   } catch (err) {
