@@ -69,6 +69,11 @@ export default function NamePhoneStep({ formData, setFormData, setMondayItemId, 
           <p className="form-subtitle">
             Register for the next CreativeCircle cohort.
           </p>
+          <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>
+            {earlyBirdActive
+              ? '* $299/Month for the first 139 hours'
+              : '* $399/Month'}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
@@ -124,17 +129,11 @@ export default function NamePhoneStep({ formData, setFormData, setMondayItemId, 
             )}
           </div>
 
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem', textAlign: 'center', lineHeight: '1.4' }}>
-            By providing your phone number and continuing, you consent to receive SMS messages from One39 regarding your registration. Msg &amp; data rates may apply.
-          </p>
-
-          <button type="submit" className="btn-primary" disabled={submitting} style={{ marginTop: '1rem' }}>
+          <button type="submit" className="btn-primary" disabled={submitting}>
             {submitting ? 'Submitting...' : 'Continue'}
           </button>
-          <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
-            {earlyBirdActive
-              ? '* $299/Month for the first 139 hours'
-              : '* $399/Month'}
+          <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.5rem', textAlign: 'center', opacity: 0.6 }}>
+            By continuing, you consent to receive SMS from One39. Msg &amp; data rates may apply.
           </p>
         </form>
       </div>
