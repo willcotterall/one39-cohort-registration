@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import CoachCard from './CoachCard'
 import { useCountdown } from '../hooks/useCountdown'
 import { EARLY_BIRD_END } from '../data/pricing'
@@ -13,7 +12,7 @@ const COACHES = [
   'Mack Brock',
 ]
 
-export default function RegistrationForm({ formData, setFormData, setMondayItemId, onNext }) {
+export default function RegistrationForm({ formData, setFormData, mondayItemId, onNext, onBack }) {
   const [errors, setErrors] = useState({})
   const [activeModal, setActiveModal] = useState(null)
   const [submitting, setSubmitting] = useState(false)
@@ -33,12 +32,9 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
 
   function validate() {
     const next = {}
-    if (!formData.firstName.trim()) next.firstName = 'First name is required'
-    if (!formData.lastName.trim()) next.lastName = 'Last name is required'
     if (!formData.email.trim()) next.email = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       next.email = 'Enter a valid email'
-    if (!formData.phone.trim()) next.phone = 'Phone number is required'
     if (!formData.coach) next.coach = 'Please select a coach'
     if (!formData.termsAccepted) next.termsAccepted = 'You must accept the terms'
     if (!formData.noRecordingAccepted) next.noRecordingAccepted = 'You must acknowledge the no-recording policy'
@@ -55,24 +51,19 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
 
     setSubmitting(true)
     try {
-      const res = await fetch('/api/create-monday-item', {
+      await fetch('/api/update-monday-item', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: `${formData.firstName} ${formData.lastName}`,
+          mondayItemId,
           email: formData.email,
-          phone: formData.phone,
           coach: formData.coach,
           churchName: formData.churchName,
           position: formData.position,
         }),
       })
-      const data = await res.json()
-      if (data.mondayItemId) {
-        setMondayItemId(data.mondayItemId)
-      }
     } catch (err) {
-      console.error('Monday.com item creation failed:', err)
+      console.error('Monday.com item update failed:', err)
     }
     setSubmitting(false)
     onNext()
@@ -81,53 +72,18 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
   return (
     <section className="form-section form-section--dark">
       <div className="form-container">
-        <Link to="/" className="form-back-link">
-          &larr; Back to Home
-        </Link>
+        <button type="button" className="form-back-link" onClick={onBack}>
+          &larr; Back
+        </button>
         <div className="form-header">
-          <p className="form-step-label">Step 1 of 2</p>
-          <h1 className="form-title">Join the Circle</h1>
+          <p className="form-step-label">Step 2 of 3</p>
+          <h1 className="form-title">Tell Us More</h1>
           <p className="form-subtitle">
-            Register for the next CreativeCircle cohort.
+            Select your coach and complete your registration.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
-          <div className="form-row">
-            <div className="form-field">
-              <label className="form-label" htmlFor="firstName">
-                First Name <span className="required">*</span>
-              </label>
-              <input
-                id="firstName"
-                className={`form-input${errors.firstName ? ' form-input--error' : ''}`}
-                type="text"
-                placeholder="First name"
-                value={formData.firstName}
-                onChange={(e) => update('firstName', e.target.value)}
-              />
-              {errors.firstName && (
-                <span className="form-error">{errors.firstName}</span>
-              )}
-            </div>
-            <div className="form-field">
-              <label className="form-label" htmlFor="lastName">
-                Last Name <span className="required">*</span>
-              </label>
-              <input
-                id="lastName"
-                className={`form-input${errors.lastName ? ' form-input--error' : ''}`}
-                type="text"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={(e) => update('lastName', e.target.value)}
-              />
-              {errors.lastName && (
-                <span className="form-error">{errors.lastName}</span>
-              )}
-            </div>
-          </div>
-
           <div className="form-field">
             <label className="form-label" htmlFor="email">
               Email <span className="required">*</span>
@@ -142,23 +98,6 @@ export default function RegistrationForm({ formData, setFormData, setMondayItemI
             />
             {errors.email && (
               <span className="form-error">{errors.email}</span>
-            )}
-          </div>
-
-          <div className="form-field">
-            <label className="form-label" htmlFor="phone">
-              Phone <span className="required">*</span>
-            </label>
-            <input
-              id="phone"
-              className={`form-input${errors.phone ? ' form-input--error' : ''}`}
-              type="tel"
-              placeholder="(555) 000-0000"
-              value={formData.phone}
-              onChange={(e) => update('phone', e.target.value)}
-            />
-            {errors.phone && (
-              <span className="form-error">{errors.phone}</span>
             )}
           </div>
 

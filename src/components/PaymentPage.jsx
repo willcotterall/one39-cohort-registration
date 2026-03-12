@@ -232,7 +232,7 @@ function CheckoutForm({ formData, mondayItemId, onBack }) {
     <section className="form-section form-section--dark">
       <div className="form-container">
         <div className="form-header">
-          <p className="form-step-label">Step 2 of 2</p>
+          <p className="form-step-label">Step 3 of 3</p>
           <h1 className="form-title">Complete Payment</h1>
           <p className="form-subtitle">
             Secure your spot in the CreativeCircle cohort.

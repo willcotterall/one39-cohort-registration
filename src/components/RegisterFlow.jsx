@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import NamePhoneStep from './NamePhoneStep'
 import RegistrationForm from './RegistrationForm'
 import PaymentPage from './PaymentPage'
 
@@ -29,7 +30,7 @@ export default function RegisterFlow() {
       </header>
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {step === 1 && (
-          <RegistrationForm
+          <NamePhoneStep
             formData={formData}
             setFormData={setFormData}
             setMondayItemId={setMondayItemId}
@@ -37,10 +38,19 @@ export default function RegisterFlow() {
           />
         )}
         {step === 2 && (
+          <RegistrationForm
+            formData={formData}
+            setFormData={setFormData}
+            mondayItemId={mondayItemId}
+            onNext={() => setStep(3)}
+            onBack={() => setStep(1)}
+          />
+        )}
+        {step === 3 && (
           <PaymentPage
             formData={formData}
             mondayItemId={mondayItemId}
-            onBack={() => setStep(1)}
+            onBack={() => setStep(2)}
           />
         )}
       </main>

@@ -48,24 +48,21 @@ async function getOrCreateGroup(coachName) {
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, phone, coach, churchName, position } = req.body;
+  const { name, phone } = req.body;
 
-  if (!name || !email || !coach) {
-    return res.status(400).json({ error: 'Name, email, and coach are required' });
+  if (!name || !phone) {
+    return res.status(400).json({ error: 'Name and phone are required' });
   }
 
   try {
-    const groupId = await getOrCreateGroup(coach);
+    const groupId = await getOrCreateGroup('No Coach/ Only Filled Out Step One');
     const today = new Date().toISOString().split('T')[0];
 
     const columnValues = {
-      "email_mm0pqws": { "email": email, "text": email },
       "phone_mm0p7k3y": { "phone": phone, "countryShortName": "US" },
       "date_mm0ptyex": { "date": today },
       "date_mm0pa9c9": { "date": today },
       "color_mm14can9": { "label": "Pending" },
-      "text_mm0zpx5": churchName || '',
-      "text_mm133myq": coach,
     };
 
     const mutation = `
