@@ -9,7 +9,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'What does the schedule look like?',
-    answer: 'The cohort meets virtually twice per month starting April 1, 2026. All sessions are LIVE with your assigned coach and cohort group — not pre-recorded, not a webinar. Between sessions, you\'ll have framework assignments and implementation tasks to apply directly to your church context. Expect to invest 4–6 hours per month.',
+    answer: 'The cohort meets virtually twice per month starting May 1, 2026. All sessions are LIVE with your assigned coach and cohort group — not pre-recorded, not a webinar. Between sessions, you\'ll have framework assignments and implementation tasks to apply directly to your church context. Expect to invest 4–6 hours per month.',
   },
   {
     question: 'Can I switch coaches after registration?',
@@ -17,7 +17,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'What is the refund policy?',
-    answer: 'Full refunds are available up to 14 days before the cohort start date (April 1, 2026). After that, no refunds are issued but you may transfer your spot to another qualified leader. Monthly payment plans can be canceled at any time, but access ends at cancellation.',
+    answer: 'Full refunds are available up to 14 days before the cohort start date (May 1, 2026). After that, no refunds are issued but you may transfer your spot to another qualified leader. Monthly payment plans can be canceled at any time, but access ends at cancellation.',
   },
   {
     question: 'What if I\'m part of a larger team — is there a group rate?',

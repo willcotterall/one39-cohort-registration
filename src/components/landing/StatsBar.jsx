@@ -10,7 +10,7 @@ export default function StatsBar() {
       <div className="stats-bar-inner">
         <div className="stats-bar-item">
           <span className="stats-bar-label">Starts</span>
-          <span className="stats-bar-value">April 1, 2026</span>
+          <span className="stats-bar-value">May 1, 2026</span>
         </div>
         <div className="stats-bar-divider" />
         <div className="stats-bar-item">
